@@ -95,9 +95,10 @@ fun ProviderSetupScreen(
 
     // ?? Local form state ??????????????????????????????????????????????????????
     var selectedTab by rememberSaveable { mutableStateOf(0) }
-    var name by rememberSaveable { mutableStateOf("") }
+    // MolloTV: pre-fill name + server URL para reducir setup fricción a la familia
+    var name by rememberSaveable { mutableStateOf("MolloTV") }
     var m3uUrl by rememberSaveable { mutableStateOf("") }
-    var serverUrl by rememberSaveable { mutableStateOf("") }
+    var serverUrl by rememberSaveable { mutableStateOf("https://tv.mollo-ai.com") }
     var username by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     var stalkerMacAddress by rememberSaveable { mutableStateOf("") }

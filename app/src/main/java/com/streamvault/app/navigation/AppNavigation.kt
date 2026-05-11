@@ -71,6 +71,7 @@ object Routes {
     const val WELCOME = "welcome"
     const val PARENTAL_CONTROL_GROUPS = "parental_control_groups/{providerId}"
     const val MULTI_VIEW = "multi_view"
+    const val MOLLO_HOME = "mollo_home"
 
 
     fun providerSetup(providerId: Long? = null, importUri: String? = null): String {
@@ -267,7 +268,7 @@ fun AppNavigation(mainActivity: MainActivity) {
         composable(Routes.WELCOME) {
             WelcomeScreen(
                 onNavigateToHome = dropUnlessResumed {
-                    navController.navigate(Routes.HOME) {
+                    navController.navigate(Routes.MOLLO_HOME) {
                         popUpTo(Routes.WELCOME) { inclusive = true }
                     }
                 },
@@ -294,7 +295,7 @@ fun AppNavigation(mainActivity: MainActivity) {
                 initialImportUri = importUri,
                 onBack = { navController.popBackStack() },
                 onProviderAdded = dropUnlessResumed {
-                    navController.navigate(Routes.HOME) {
+                    navController.navigate(Routes.MOLLO_HOME) {
                         popUpTo(Routes.PROVIDER_SETUP) { inclusive = true }
                     }
                 }
@@ -668,6 +669,16 @@ fun AppNavigation(mainActivity: MainActivity) {
         composable(Routes.MULTI_VIEW) {
             MultiViewScreen(
                 onBack = { navController.popBackStack() }
+            )
+        }
+
+        composable(Routes.MOLLO_HOME) {
+            com.streamvault.app.ui.screens.mollohome.MolloHomeScreen(
+                onEventClick = { catId ->
+                    tabNavigate(Routes.liveTv(catId))
+                },
+                onNavigate = { route -> tabNavigate(route) },
+                currentRoute = Routes.MOLLO_HOME
             )
         }
     }

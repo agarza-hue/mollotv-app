@@ -1,11 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">StreamVault</string>
+    <string name="app_name">MolloTV</string>
     <string name="nav_home">Inicio</string>
+    <string name="nav_mollo_home">Inicio MolloTV</string>
     <string name="nav_live_tv">TV en vivo</string>
     <string name="nav_movies">Películas</string>
     <string name="nav_series">Serie</string>
     <string name="nav_epg">Guía</string>
+    <string name="nav_sports">Deportes</string>
+    <string name="nav_kids">Kids</string>
     <string name="nav_settings">Ajustes</string>
     <string name="welcome_enter_app">Entrar en la app</string>
     <string name="welcome_manage_providers">Administrar proveedores</string>

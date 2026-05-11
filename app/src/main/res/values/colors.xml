@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- MolloTV Catppuccin Mocha palette -->
+    <color name="mollo_base">#1e1e2e</color>
+    <color name="mollo_mantle">#181825</color>
+    <color name="mollo_crust">#11111b</color>
+    <color name="mollo_text">#cdd6f4</color>
+    <color name="mollo_mauve">#cba6f7</color>
+    <color name="mollo_lavender">#b4befe</color>
+    <color name="mollo_green">#a6e3a1</color>
+    <color name="mollo_red">#f38ba8</color>
+    <color name="mollo_yellow">#f9e2af</color>
+    <color name="mollo_peach">#fab387</color>
+</resources>

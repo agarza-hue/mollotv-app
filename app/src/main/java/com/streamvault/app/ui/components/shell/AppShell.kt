@@ -31,6 +31,9 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.SportsSoccer
+import androidx.compose.material.icons.filled.ChildCare
+import androidx.compose.material.icons.filled.Whatshot
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -280,15 +283,16 @@ private fun TopNavigationBar(
                     .padding(horizontal = 12.dp),
                 horizontalArrangement = Arrangement.spacedBy(6.dp)
             ) {
+                val activeRoute = findActiveDestinationItem(items, currentRoute)?.route
                 items.forEach { item ->
                     val requester = focusRequesters.getOrPut(item.route) { FocusRequester() }
                     TopNavigationButton(
                         label = stringResource(item.labelRes),
                         icon = item.icon,
-                        selected = currentRoute.startsWith(item.route),
+                        selected = activeRoute == item.route,
                         focusRequester = requester,
                         onClick = {
-                            if (!currentRoute.startsWith(item.route)) {
+                            if (activeRoute != item.route) {
                                 onNavigate(item.route)
                             }
                         }
@@ -689,15 +693,16 @@ private fun DestinationRail(
                 color = AppColors.TextTertiary
             )
             Spacer(modifier = Modifier.height(10.dp))
+            val activeRoute = findActiveDestinationItem(items, currentRoute)?.route
             items.forEach { item ->
                 val requester = focusRequesters.getOrPut(item.route) { FocusRequester() }
                 RailButton(
                     label = stringResource(item.labelRes),
                     icon = item.icon,
-                    selected = currentRoute.startsWith(item.route),
+                    selected = activeRoute == item.route,
                     modifier = Modifier.focusRequester(requester),
                     onClick = {
-                        if (!currentRoute.startsWith(item.route)) {
+                        if (activeRoute != item.route) {
                             onNavigate(item.route)
                         }
                     }
@@ -788,12 +793,22 @@ private fun findActiveDestinationItem(
         .maxByOrNull { it.route.length }
         ?: items.firstOrNull { it.route == currentRoute }
 
+// Hardcoded category IDs from upstream Xtream API for user 'agarza':
+//   524 = Deportes (Tier 4, 27 canales)
+//   525 = Kids (Tier 5, 14 canales)
+// Si en el futuro se vuelve multi-user, mover a per-user config o name-matching.
+private const val CATEGORY_ID_SPORTS = 524L
+private const val CATEGORY_ID_KIDS = 525L
+
 private fun buildDestinationItems(): List<DestinationItem> = listOf(
-    DestinationItem(Routes.HOME, R.string.nav_home, Icons.Default.Home),
+    DestinationItem(Routes.MOLLO_HOME, R.string.nav_mollo_home, Icons.Filled.Whatshot),
+    DestinationItem(Routes.SEARCH, R.string.search_title, Icons.Default.Search),
+    DestinationItem(Routes.EPG, R.string.nav_epg, Icons.Default.Info),
     DestinationItem(Routes.LIVE_TV, R.string.nav_live_tv, Icons.Default.PlayArrow),
+    DestinationItem(Routes.liveTv(CATEGORY_ID_SPORTS), R.string.nav_sports, Icons.Filled.SportsSoccer),
+    DestinationItem(Routes.liveTv(CATEGORY_ID_KIDS), R.string.nav_kids, Icons.Filled.ChildCare),
     DestinationItem(Routes.MOVIES, R.string.nav_movies, Icons.Default.Star),
     DestinationItem(Routes.SERIES, R.string.nav_series, Icons.Default.Menu),
-    DestinationItem(Routes.EPG, R.string.nav_epg, Icons.Default.Info),
-    DestinationItem(Routes.SEARCH, R.string.search_title, Icons.Default.Search),
+    DestinationItem(Routes.HOME, R.string.nav_home, Icons.Default.Home),
     DestinationItem(Routes.SETTINGS, R.string.nav_settings, Icons.Default.Settings)
 )

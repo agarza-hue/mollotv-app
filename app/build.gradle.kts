@@ -41,17 +41,20 @@ fun computeOfficialSigningCertSha256(): String {
 val officialSigningCertSha256 = computeOfficialSigningCertSha256()
 
 android {
+    // Namespace = package físico del código (no se cambia para evitar rewrite masivo).
+    // applicationId = identidad pública de la app (ese sí cambia a "tv.mollo.app").
     namespace = "com.streamvault.app"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.streamvault.app"
+        applicationId = "tv.mollo.app"
         minSdk = 28
         targetSdk = 36
-        versionCode = 10
-        versionName = "1.0.9"
+        versionCode = 18
+        versionName = "1.0.9-mollotv-9-home-rail"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "OFFICIAL_APPLICATION_ID", "\"com.streamvault.app\"")
+        // Self-check IDs: aplican al applicationId final, no al package interno
+        buildConfigField("String", "OFFICIAL_APPLICATION_ID", "\"tv.mollo.app\"")
         buildConfigField("String", "OFFICIAL_SIGNING_CERT_SHA256", "\"$officialSigningCertSha256\"")
     }
 
@@ -119,6 +122,7 @@ dependencies {
     implementation(composeBom)
     implementation(libs.compose.ui)
     implementation(libs.compose.material3)
+    implementation("androidx.compose.material:material-icons-extended")
     implementation(libs.compose.ui.tooling.preview)
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation("androidx.compose.ui:ui-test-manifest")

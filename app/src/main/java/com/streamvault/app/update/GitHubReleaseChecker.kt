@@ -27,7 +27,10 @@ class GitHubReleaseChecker @Inject constructor(
     private val okHttpClient: OkHttpClient
 ) {
     private companion object {
-        private const val RELEASES_LATEST_URL = "https://api.github.com/repos/Davidona/StreamVault-IPTV/releases/latest"
+        // MolloTV custom update endpoint (replaces Davidona/StreamVault-IPTV).
+        // Sirve JSON estilo GitHub release API desde tv.mollo-ai.com/api/release/latest.json.
+        // Cuando se promueve un build nuevo a "stable", actualizar ese JSON (bump tag_name).
+        private const val RELEASES_LATEST_URL = "https://tv.mollo-ai.com/api/release/latest.json"
         private const val MAX_RESPONSE_BYTES = 512 * 1024L
         private val STRUCTURED_TAG_REGEX = Regex("""^v?(.+?)\+(\d+)$""", RegexOption.IGNORE_CASE)
     }

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">StreamVault</string>
+    <string name="app_name">MolloTV</string>
 
     
     <string name="nav_home">Home</string>
@@ -8,6 +8,9 @@
     <string name="nav_movies">Movies</string>
     <string name="nav_series">Series</string>
     <string name="nav_epg">Guide</string>
+    <string name="nav_mollo_home">MolloTV Home</string>
+    <string name="nav_sports">Sports</string>
+    <string name="nav_kids">Kids</string>
     <string name="nav_settings">Settings</string>
 
     
