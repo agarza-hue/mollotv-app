@@ -72,6 +72,7 @@ object Routes {
     const val PARENTAL_CONTROL_GROUPS = "parental_control_groups/{providerId}"
     const val MULTI_VIEW = "multi_view"
     const val MOLLO_HOME = "mollo_home"
+    const val SPORTS_SCHEDULE = "sports_schedule"
 
 
     fun providerSetup(providerId: Long? = null, importUri: String? = null): String {
@@ -677,8 +678,30 @@ fun AppNavigation(mainActivity: MainActivity) {
                 onEventClick = { catId ->
                     tabNavigate(Routes.liveTv(catId))
                 },
+                onPlayChannel = { channel ->
+                    navController.navigateToPlayer(
+                        Routes.livePlayer(
+                            channel = channel,
+                            returnRoute = Routes.MOLLO_HOME
+                        )
+                    )
+                },
                 onNavigate = { route -> tabNavigate(route) },
                 currentRoute = Routes.MOLLO_HOME
+            )
+        }
+        composable(Routes.SPORTS_SCHEDULE) {
+            com.streamvault.app.ui.screens.sports.SportsScheduleScreen(
+                onPlayChannel = { channel ->
+                    navController.navigateToPlayer(
+                        Routes.livePlayer(
+                            channel = channel,
+                            returnRoute = Routes.SPORTS_SCHEDULE
+                        )
+                    )
+                },
+                onNavigate = { route -> tabNavigate(route) },
+                currentRoute = Routes.SPORTS_SCHEDULE
             )
         }
     }

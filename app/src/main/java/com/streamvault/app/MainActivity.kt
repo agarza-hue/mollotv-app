@@ -23,6 +23,7 @@ import com.streamvault.app.tv.WatchNextManager
 import com.streamvault.app.tvinput.TvInputChannelSyncManager
 import com.streamvault.app.ui.theme.StreamVaultTheme
 import com.streamvault.app.ui.time.LocalAppTimeFormat
+import com.streamvault.app.ui.update.AppUpdateBootDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 import javax.inject.Inject
@@ -159,6 +160,7 @@ class MainActivity : ComponentActivity() {
             ) {
                 StreamVaultTheme {
                     AppNavigation(mainActivity = this@MainActivity)
+                    AppUpdateBootDialog()
                 }
             }
         }

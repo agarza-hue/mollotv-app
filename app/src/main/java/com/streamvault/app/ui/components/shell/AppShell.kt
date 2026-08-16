@@ -32,6 +32,7 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.SportsSoccer
+import androidx.compose.material.icons.filled.SportsBaseball
 import androidx.compose.material.icons.filled.ChildCare
 import androidx.compose.material.icons.filled.Whatshot
 import androidx.compose.runtime.Composable
@@ -802,6 +803,7 @@ private const val CATEGORY_ID_KIDS = 525L
 
 private fun buildDestinationItems(): List<DestinationItem> = listOf(
     DestinationItem(Routes.MOLLO_HOME, R.string.nav_mollo_home, Icons.Filled.Whatshot),
+    DestinationItem(Routes.SPORTS_SCHEDULE, R.string.nav_sports_schedule, Icons.Filled.SportsBaseball),
     DestinationItem(Routes.SEARCH, R.string.search_title, Icons.Default.Search),
     DestinationItem(Routes.EPG, R.string.nav_epg, Icons.Default.Info),
     DestinationItem(Routes.LIVE_TV, R.string.nav_live_tv, Icons.Default.PlayArrow),

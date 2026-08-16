@@ -50,8 +50,8 @@ android {
         applicationId = "tv.mollo.app"
         minSdk = 28
         targetSdk = 36
-        versionCode = 18
-        versionName = "1.0.9-mollotv-9-home-rail"
+        versionCode = 22
+        versionName = "1.0.13-stadiomax-theme"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         // Self-check IDs: aplican al applicationId final, no al package interno
         buildConfigField("String", "OFFICIAL_APPLICATION_ID", "\"tv.mollo.app\"")
@@ -71,8 +71,12 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = true
-            isShrinkResources = true
+            // R8 minify deshabilitado: las reglas actuales de proguard no preservan
+            // suficiente metadata Compose/Hilt y rompen navegación + rendering (cuadros
+            // a medias, botones inertes). Volver a habilitar requiere fix proguard
+            // separado y verificación en Fire TV antes de re-shippear.
+            isMinifyEnabled = false
+            isShrinkResources = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

@@ -3,6 +3,7 @@
     <string name="app_name">MolloTV</string>
     <string name="nav_home">Inicio</string>
     <string name="nav_mollo_home">Inicio MolloTV</string>
+    <string name="nav_sports_schedule">Hoy</string>
     <string name="nav_live_tv">TV en vivo</string>
     <string name="nav_movies">Películas</string>
     <string name="nav_series">Serie</string>
